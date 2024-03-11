@@ -10,7 +10,7 @@ from crazyflie_driver.msg import GenericLogData
 
 # PID controller gains
 Kp = 0.3
-Ki = 0.001
+Ki = 0.0001
 Kd = 0.1
 
 duration_test = 10.0/50.0
@@ -28,7 +28,7 @@ class PIDController:
         
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
-        self.error = np.abs(self.setpoint - feedback_value)
+        self.error = self.setpoint - feedback_value
 
         # Compute the integral and derivative terms
         self.integral += self.last_error*self.dt #TODO: Add code below
