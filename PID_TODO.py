@@ -14,7 +14,8 @@ Ki = 0.001
 Kd = 0.1
 
 duration_test = 20.0/50.0
-
+freq = 50
+duration = 10
 class PIDController:
     def __init__(self, setpoint):
         self.setpoint = setpoint
@@ -22,7 +23,7 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-        self.dt = 2 * math.pi * (1.0/(freq-1)) * duration * i
+        self.dt = 2 * math.pi * (1.0/(freq-1)) * duration 
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
