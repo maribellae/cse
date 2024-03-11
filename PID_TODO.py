@@ -55,13 +55,13 @@ def coil_trajectory(z0, freq, duration,count_coils):
     x = list()
     y = list()
     z = list() 
-    k=0
-    for i in np.arange(0, 2 * math.pi *count_coils, math.pi/8 ):
-         
-        x.append(0.8 * math.cos(i))
-        y.append(0.8 * math.sin(i))
-        z.append(z0 + k)
-        k+=0.01
+   
+    for i in range(freq):
+        t0 = 2 * math.pi * (1.0/(freq-1)) * duration * i 
+        x.append(0.8 * math.cos(t0/duration))
+        y.append(0.8 * math.sin(t0/duration))
+        z.append(z0 + to)
+        
     
     return (x,y,z)
 
