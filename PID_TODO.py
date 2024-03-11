@@ -71,10 +71,10 @@ def coil_trajectory(z0, freq, duration,count_coils):
         for i in range(freq-1):
             t0 = 2 * math.pi * (1.0/(freq-1)) * (duration/count_coils) * i 
             #print(t0/(duration/count_coils))
-            x.append(0.5 * math.cos(t0/(duration/count_coils)))
-            y.append(0.5 * math.sin(t0/(duration/count_coils)))
+            x.append(1* math.cos(t0/(duration/count_coils)))
+            y.append(1 * math.sin(t0/(duration/count_coils)))
             z.append(z0 + k)
-            k = k+0.01
+            k = k+0.1
     
     return (x,y,z)
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     cf1.takeoff(targetHeight = 1.5, duration = 2.0)
 
     time.sleep(5.0)
-    cf1.goTo([0.5,0,1.5], 0.0, duration = 3.0, relative = False)
+    cf1.goTo([1,0,1.5], 0.0, duration = 3.0, relative = False)
     time.sleep(3.0)
 
     # (t , x , y,) = circle_trajectory(50 , 10 , 0.8)
