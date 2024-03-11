@@ -44,7 +44,7 @@ class PIDController:
         print('err',self.error)
         self.memory = self.memory[1:] + [self.last_error]
         # Compute the PID output
-        output =  np.clip(Kp*self.error + Kd*self.derivative + Ki*self.integral , -0.5, 0.5) #TODO: Add code below
+        output =  np.clip(Kp*self.error + Kd*self.derivative + Ki*self.integral , -0.03, 0.03) #TODO: Add code below
         print('o', output)
         return output
 
