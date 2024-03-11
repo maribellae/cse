@@ -14,7 +14,7 @@ Ki = 0.001
 Kd = 0.1
 
 duration_test = 3.0/50.0
-freq = 50
+freq = 150
 duration = 10
 count_coils = 4
 class PIDController:
