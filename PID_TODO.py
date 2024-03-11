@@ -51,6 +51,15 @@ def circle_trajectory(freq, duration,r):
 def coil_trajectory(z0, freq, duration,count_coils):
     # Generate waypoints for a spiral trajectory
     #TODO: Add code below
+    x = list()
+    y = list()
+    z = list() 
+    for i in range(freq*count_coils):
+        t0 = 2 * math.pi * (1.0/(freq-1)) * duration * i
+        x.append(2 * math.cos(t0/duration))
+        y.append(2 * math.sin(t0/duration))
+        z.append(z0 + 2*i)    
+    
     return (x,y,z)
 
 def square_trajectory(length,height):
@@ -74,8 +83,8 @@ if __name__ == '__main__':
     time.sleep(3.0)
 
     # (t , x , y,) = circle_trajectory(50 , 10 , 0.8)
-    (x , y, z) = square_trajectory(1 , 1.5)
-
+    #(x , y, z) = square_trajectory(1 , 1.5)
+    (x , y, z) =coil_trajectory(1,1 , 1.5,4)
     # Initialize the PID controller for x, y, and z
     pid_x = PIDController(x[0])
     pid_y = PIDController(y[0])
