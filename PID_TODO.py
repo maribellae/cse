@@ -87,7 +87,7 @@ if __name__ == '__main__':
     cf1.takeoff(targetHeight = 1.5, duration = 2.0)
 
     time.sleep(5.0)
-    cf1.goTo([0,0,1.5], 0.0, duration = 3.0, relative = False)
+    cf1.goTo([0.8,0,1.5], 0.0, duration = 3.0, relative = False)
     time.sleep(3.0)
 
     # (t , x , y,) = circle_trajectory(50 , 10 , 0.8)
