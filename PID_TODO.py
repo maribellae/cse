@@ -56,9 +56,9 @@ def coil_trajectory(z0, freq, duration,count_coils):
     z = list() 
     for i in range(freq*count_coils):
         t0 = 2 * math.pi * (1.0/(freq-1)) * duration * i
-        x.append(2 * math.cos(t0/duration))
-        y.append(2 * math.sin(t0/duration))
-        z.append(z0 + 2*i)    
+        x.append(0.8 * math.cos(t0/duration))
+        y.append(0.8 * math.sin(t0/duration))
+        z.append(z0 + i)    
     
     return (x,y,z)
 
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
     # (t , x , y,) = circle_trajectory(50 , 10 , 0.8)
     #(x , y, z) = square_trajectory(1 , 1.5)
-    (x , y, z) =coil_trajectory(1,1 , 1.5,4)
+    (x , y, z) =coil_trajectory(1,50 , 10,4)
     # Initialize the PID controller for x, y, and z
     pid_x = PIDController(x[0])
     pid_y = PIDController(y[0])
