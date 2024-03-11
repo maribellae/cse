@@ -13,7 +13,7 @@ Kp = 0.3
 Ki = 0.001
 Kd = 0.1
 
-duration_test = 10.0/50.0
+duration_test = 3.0/50.0
 freq = 50
 duration = 10
 count_coils = 4
@@ -74,7 +74,7 @@ def coil_trajectory(z0, freq, duration,count_coils):
             x.append(1* math.cos(t0/(duration/count_coils)))
             y.append(1 * math.sin(t0/(duration/count_coils)))
             z.append(z0 + k)
-            k = k+0.1
+            k = k+0.005
     
     return (x,y,z)
 
