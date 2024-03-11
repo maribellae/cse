@@ -30,7 +30,7 @@ class PIDController:
         output = 0 
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
-        print(self.error)
+        #print(self.error)
         # Compute the integral and derivative terms
         self.integral += self.last_error*self.dt #TODO: Add code below
         #self.integral = np.sum(self.memory)*self.dt
