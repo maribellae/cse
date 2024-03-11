@@ -33,7 +33,7 @@ class PIDController:
         # Compute the integral and derivative terms
         self.integral += self.last_error*self.dt #TODO: Add code below
         
-        self.integral = np.clip(self.integral,-1.5, 1.5)
+        #self.integral = np.clip(self.integral,-1.5, 1.5)
         print(self.integral)
         self.derivative = (self.error-self.last_error) / self.dt #TODO: Add code below
         self.last_error = self.error #TODO: Add code below
