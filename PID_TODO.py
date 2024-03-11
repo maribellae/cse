@@ -29,8 +29,8 @@ class PIDController:
         self.error = self.setpoint - feedback_value
 
         # Compute the integral and derivative terms
-        self.integral += self.last*self.dt #TODO: Add code below
-        self.derivative = (self.error-self.last) / self.dt #TODO: Add code below
+        self.integral += self.last_error*self.dt #TODO: Add code below
+        self.derivative = (self.error-self.last_error) / self.dt #TODO: Add code below
         self.last_error = self.error #TODO: Add code below
 
         # Compute the PID output
