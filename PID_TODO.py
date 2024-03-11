@@ -28,7 +28,7 @@ class PIDController:
         
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
-        self.error = self.setpoint - feedback_value
+        self.error = np.abs(self.setpoint - feedback_value)
 
         # Compute the integral and derivative terms
         self.integral += self.last_error*self.dt #TODO: Add code below
