@@ -111,7 +111,7 @@ if __name__ == '__main__':
         current_pos = rospy.wait_for_message('/cf1/local_position', GenericLogData)
         while True:
             current_pos = rospy.wait_for_message('/cf1/local_position', GenericLogData)
-            print(x[i], y[i],z[i])
+            #print(x[i], y[i],z[i])
             # Compute the PID output for x, y, and z
             output_x = pid_x.update(current_pos.values[0], x[i])
             output_y = pid_y.update(current_pos.values[1], y[i])
