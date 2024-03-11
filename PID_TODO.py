@@ -25,12 +25,15 @@ class PIDController:
         self.integral = 0.0
         self.derivative = 0.0
         self.dt = 1            #  (1.0/(freq-1)) * (duration/count_coils)
+        
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
 
         # Compute the integral and derivative terms
         self.integral += self.last_error*self.dt #TODO: Add code below
+        
+        #self.integral = np.clip(self.integral,-1.5, 1.5)
         self.derivative = (self.error-self.last_error) / self.dt #TODO: Add code below
         self.last_error = self.error #TODO: Add code below
 
@@ -102,7 +105,7 @@ if __name__ == '__main__':
             current_pos = rospy.wait_for_message('/cf1/local_position', GenericLogData)
 
             # Compute the PID output for x, y, and z
-            output_x = pid_x.update(current_pos.values[0],x[i])
+            output_x = pid_x.update(current_pos.values[0], x[i])
             output_y = pid_y.update(current_pos.values[1], y[i])
             output_z = pid_z.update(current_pos.values[2], z[i])
 
