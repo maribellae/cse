@@ -30,7 +30,7 @@ class PIDController:
         output = 0 
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
-
+        print(self.error)
         # Compute the integral and derivative terms
         self.integral += self.last_error*self.dt #TODO: Add code below
         #self.integral = np.sum(self.memory)*self.dt
@@ -118,6 +118,7 @@ if __name__ == '__main__':
             output_z = pid_z.update(current_pos.values[2], z[i])
 
             # Set the goal position and duration for the goTo() function
+            
             goal_pos = [x[i] + output_x, y[i] + output_y, z[i] + output_z]
             cf1.goTo(goal = goal_pos, yaw=0.0, duration = duration_test , relative = False)
             
