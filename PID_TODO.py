@@ -24,7 +24,7 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-        self.dt = 1#  (1.0/(freq-1)) * (duration/count_coils)
+        self.dt = 1
         self.memory =[0 for i in range(5)]
     def update(self, feedback_value, goal_value):
         output = 0 
@@ -42,7 +42,7 @@ class PIDController:
         #print('d',self.integral)
         self.last_error = self.error #TODO: Add code below
         #print('err',self.error)
-        self.memory = self.memory[1:] + [self.last_error]
+        #self.memory = self.memory[1:] + [self.last_error]
         # Compute the PID output
         #output =  np.clip(Kp*self.error + Kd*self.derivative + Ki*self.integral , -0.03, 0.03) #TODO: Add code below
         #print('o', output)
@@ -68,8 +68,8 @@ def coil_trajectory(z0, freq, duration,count_coils):
     z = list() 
     k = 0
     for j in range (count_coils):  
-        for i in range(3*freq-1):
-            t0 = 2 * math.pi * (1.0/(3*freq-1)) * (duration/count_coils) * i 
+        for i in range(freq-1):
+            t0 = 2 * math.pi * (1.0/(freq-1)) * (duration/count_coils) * i 
             #print(t0/(duration/count_coils))
             x.append(1* math.cos(t0/(duration/count_coils)))
             y.append(1 * math.sin(t0/(duration/count_coils)))
@@ -100,7 +100,7 @@ if __name__ == '__main__':
 
     # (t , x , y,) = circle_trajectory(50 , 10 , 0.8)
     #(x , y, z) = square_trajectory(1 , 1.5)
-    (x , y, z) = coil_trajectory(1.5,50 , 10,4)
+    (x , y, z) = coil_trajectory(1.5,150 , 10,4)
     # Initialize the PID controller for x, y, and z
     pid_x = PIDController(x[0])
     pid_y = PIDController(y[0])
