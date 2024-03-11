@@ -24,7 +24,7 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-        self.dt = 2 * math.pi * (1.0/(freq-1)) * duration * count_coils
+        self.dt = (1.0/(freq-1)) * duration 
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
@@ -57,10 +57,10 @@ def coil_trajectory(z0, freq, duration,count_coils):
     y = list()
     z = list() 
     k = 0
-    for i in range(freq):
+    for i in range(freq *count_coils ):
         t0 = 2 * math.pi * (1.0/(freq-1)) * duration * i * count_coils
-        x.append(0.8 * math.cos(t0/duration))
-        y.append(0.8 * math.sin(t0/duration))
+        x.append(0.8 * math.cos(t0/(duration * count_coils))
+        y.append(0.8 * math.sin(t0/(duration * count_coils))
         z.append(z0 + k)
         k+=0.1
     
