@@ -13,7 +13,7 @@ Kp = 0.3
 Ki = 0.001
 Kd = 0.1
 
-duration_test = 20.0/50.0
+duration_test = 5.0/50.0
 freq = 50
 duration = 10
 class PIDController:
@@ -57,7 +57,7 @@ def coil_trajectory(z0, freq, duration,count_coils):
     z = list() 
     k = 0
     for i in range(freq):
-        t0 = 2 * math.pi * (1.0/(freq-1)) * duration * i 
+        t0 = 2 * math.pi * (1.0/(freq-1)) * duration * i * count_coils
         x.append(0.8 * math.cos(t0/duration))
         y.append(0.8 * math.sin(t0/duration))
         z.append(z0 + k)
