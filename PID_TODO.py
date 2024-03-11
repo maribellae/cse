@@ -32,20 +32,21 @@ class PIDController:
         self.error = self.setpoint - feedback_value
 
         # Compute the integral and derivative terms
-        #self.integral += self.last_error*self.dt #TODO: Add code below
-        self.integral = np.sum(self.memory)*self.dt
+        self.integral += self.last_error*self.dt #TODO: Add code below
+        #self.integral = np.sum(self.memory)*self.dt
         #self.integral = np.clip(self.integral,-0.1, 0.1)
         #self.integral = np.clip(self.integral,-1.5, 1.5)
-        print('i',self.integral)
+        #print('i',self.integral)
         self.derivative = (self.error-self.last_error) / self.dt #TODO: Add code below
         
-        print('d',self.integral)
+        #print('d',self.integral)
         self.last_error = self.error #TODO: Add code below
-        print('err',self.error)
+        #print('err',self.error)
         self.memory = self.memory[1:] + [self.last_error]
         # Compute the PID output
-        output =  np.clip(Kp*self.error + Kd*self.derivative + Ki*self.integral , -0.03, 0.03) #TODO: Add code below
-        print('o', output)
+        #output =  np.clip(Kp*self.error + Kd*self.derivative + Ki*self.integral , -0.03, 0.03) #TODO: Add code below
+        #print('o', output)
+        output =  Kp*self.error + Kd*self.derivative + Ki*self.integral #TODO: Add code below
         return output
 
 def circle_trajectory(freq, duration,r):
@@ -66,13 +67,14 @@ def coil_trajectory(z0, freq, duration,count_coils):
     y = list()
     z = list() 
     k = 0
-    for j in range (count_coils): 
+    for j in range (count_coils):  
         for i in range(freq-1):
-            t0 = 2 * math.pi * (1.0/(freq-1)) * (duration) * i 
-            x.append(0.8 * math.cos(t0/(duration)))
-            y.append(0.8 * math.sin(t0/(duration)))
+            t0 = 2 * math.pi * (1.0/(freq-1)) * (duration/count_coils) * i 
+            #print(t0/(duration/count_coils))
+            x.append(0.5 * math.cos(t0/(duration/count_coils)))
+            y.append(0.5 * math.sin(t0/(duration/count_coils)))
             z.append(z0 + k)
-            k = k+0.05
+            k = k+0.01
     
     return (x,y,z)
 
@@ -93,7 +95,7 @@ if __name__ == '__main__':
     cf1.takeoff(targetHeight = 1.5, duration = 2.0)
 
     time.sleep(5.0)
-    cf1.goTo([0.8,0,1.5], 0.0, duration = 3.0, relative = False)
+    cf1.goTo([0.5,0,1.5], 0.0, duration = 3.0, relative = False)
     time.sleep(3.0)
 
     # (t , x , y,) = circle_trajectory(50 , 10 , 0.8)
