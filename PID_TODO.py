@@ -24,7 +24,7 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-        self.dt = 1            #  (1.0/(freq-1)) * (duration/count_coils)
+        self.dt =   (1.0/(freq-1)) * (duration/count_coils)
         self.memory =[0 for i in range(5)]
     def update(self, feedback_value, goal_value):
         output = 0 
