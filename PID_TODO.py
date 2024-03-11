@@ -23,7 +23,7 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-        self.dt = 1 #2 * math.pi * (1.0/(freq-1)) * duration 
+        self.dt = 2 * math.pi * (1.0/(freq-1)) * duration 
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
