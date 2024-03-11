@@ -22,18 +22,18 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-
+        self.dt = 2 * math.pi * (1.0/(freq-1)) * duration * i
     def update(self, feedback_value, goal_value):
         self.setpoint = goal_value
         self.error = self.setpoint - feedback_value
 
         # Compute the integral and derivative terms
-        self.integral += 1 #TODO: Add code below
-        self.derivative = 1 #TODO: Add code below
-        self.last_error = 1 #TODO: Add code below
+        self.integral += self.last*self.dt #TODO: Add code below
+        self.derivative = (self.error-self.last) / self.dt #TODO: Add code below
+        self.last_error = self.error #TODO: Add code below
 
         # Compute the PID output
-        output = 1 #TODO: Add code below
+        output = Kp*self.error + Kd*self.derivative + Ki*self.integral #TODO: Add code below
 
         return output
 
