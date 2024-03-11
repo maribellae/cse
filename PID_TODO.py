@@ -24,7 +24,7 @@ class PIDController:
         self.last_error = 0.0
         self.integral = 0.0
         self.derivative = 0.0
-        self.dt =   (1.0/(freq-1)) * (duration/count_coils)
+        self.dt = 1#  (1.0/(freq-1)) * (duration/count_coils)
         self.memory =[0 for i in range(5)]
     def update(self, feedback_value, goal_value):
         output = 0 
@@ -34,11 +34,14 @@ class PIDController:
         # Compute the integral and derivative terms
         #self.integral += self.last_error*self.dt #TODO: Add code below
         self.integral = np.sum(self.memory)*self.dt
-        self.integral = np.clip(self.integral,-1, 1)
+        #self.integral = np.clip(self.integral,-0.1, 0.1)
         #self.integral = np.clip(self.integral,-1.5, 1.5)
-        print(self.integral)
+        print('i',self.integral)
         self.derivative = (self.error-self.last_error) / self.dt #TODO: Add code below
+        
+        print('d',self.integral)
         self.last_error = self.error #TODO: Add code below
+        print('err',self.error)
         self.memory = self.memory[1:] + [self.last_error]
         # Compute the PID output
         output =  np.clip(Kp*self.error + Kd*self.derivative + Ki*self.integral , -0.5, 0.5) #TODO: Add code below
