@@ -68,9 +68,9 @@ def coil_trajectory(z0, freq, duration,count_coils):
     k = 0
     for j in range (count_coils): 
         for i in range(freq-1):
-            t0 = 2 * math.pi * (1.0/(freq-1)) * (duration/count_coils) * i 
-            x.append(0.8 * math.cos(t0/(duration/count_coils)))
-            y.append(0.8 * math.sin(t0/(duration/count_coils)))
+            t0 = 2 * math.pi * (1.0/(freq-1)) * (duration) * i 
+            x.append(0.8 * math.cos(t0/(duration)))
+            y.append(0.8 * math.sin(t0/(duration)))
             z.append(z0 + k)
             k = k+0.05
     
