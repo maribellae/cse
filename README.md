@@ -3,7 +3,7 @@
 ### Done by Msc-1 Maria Makarova
 
 
-## The contents:  :ghost:  :ghost:  :ghost:
+## The contents:  :ghost:  
 
 1) Task about PID control of the Drones - *PID_TODO.py* (code)  and *PID_DRONES.mp4* (video)
 
