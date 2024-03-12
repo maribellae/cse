@@ -5,7 +5,7 @@ Done by Msc-1 Maria Makarova
 
 The contents:
 
-1) Task about PID control of the Drones - *PID_TODO.py* (code)  and *PID_DRONES (online-video-cutter.com).mp4* (video)
+1) Task about PID control of the Drones - *PID_TODO.py* (code)  and *PID_DRONES.mp4* (video)
 
 It was done via WSL2 , Ubuntu 16.04, ROS-Kinetic and Python 2.7 ( only this worked)
 
