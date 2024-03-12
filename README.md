@@ -1,9 +1,9 @@
-###There are the exercises for the Final Exam on CSE course, Skoltech.
+### There are the exercises for the Final Exam on CSE course, Skoltech.
 
-###Done by Msc-1 Maria Makarova
+### Done by Msc-1 Maria Makarova
 
 
-##The contents:
+## The contents:
 
 1) Task about PID control of the Drones - *PID_TODO.py* (code)  and *PID_DRONES.mp4* (video)
 
